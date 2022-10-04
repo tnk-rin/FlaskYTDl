@@ -4,6 +4,7 @@ import os
 from markupsafe import escape
 
 app = Flask(__name__)
+
 @app.route("/")
 def index():
     with open('index.html', 'r') as file:
