@@ -38,10 +38,3 @@ def file():
 
     r = send_file(return_data, mimetype=mime, as_attachment=True, attachment_filename="converted.mp3")
     return r
-
-
-def filer():
-    mode = request.args.get('mode')
-    filename = "tmp/ytdlout.mp3" if mode == 'audio' else "tmp/ytdlout.mp4"
-    dl = send_file(filename, as_attachment=True, download_name="converted.mp3")
-    return dl
