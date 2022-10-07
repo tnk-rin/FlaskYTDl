@@ -1,8 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-	<meta charset="utf-8"/>
+<html lang="EN">
 
 	<style>
+		* {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 62.5%;
+			padding: 0;
+			margin: 0;
+		}
+
 		body {
 			background: #dde6f0;
 		}
@@ -20,24 +26,18 @@
 			font-weight: 100;
 			font-size: 3rem;
 			padding: 1rem 0rem 0rem 1rem;
-			color: #000
+			color: #000;
 		}
 
-		.textbox {
-			width: 37.5rem;
-			height: 5rem;
-			font-size: 1.5rem;
-			margin: 1rem 1rem 1rem 1rem;
-			padding-left: 0.5rem
-		}
-
-		.button {
-			width: 11rem;
-			height: 5rem;
+		label {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 100;
 			font-size: 2rem;
-			margin: 0rem 1rem 1rem 0rem;
+			padding-left: 0.5rem;
+			padding-right: 2rem;
+			color: #000;
 		}
-	
+
 		iframe {
 			margin: 1rem 1rem 1rem 1rem;
 		}
@@ -49,33 +49,148 @@
 			border-color: #00000000;
 		}
 
-		* {
-			font-family: 'Montserrat', sans-serif;
-			font-size: 62.5%;
-			padding: 0;
-			margin: 0;
+		.inputframe {
+			margin-left: 1rem;
+			margin-bottom: 1rem;
 		}
+
+		.previewframe {
+			margin-left: 1rem;
+		}
+
+		.textbox {
+			width: 37.5rem;
+			height: 5rem;
+			font-size: 1.5rem;
+			margin: 1rem 1rem 1rem 1rem;
+			padding-left: 0.5rem;
+		}
+
+		.button {
+			width: 11rem;
+			height: 5rem;
+			font-size: 2rem;
+			margin: 0rem 1rem 1rem 0rem;
+		}
+
+		/* Radio stuff */
+		.type{
+			display: inline-flex;
+			height: 5rem;
+			width: 28rem;
+			align-items: center;
+			justify-content: space-evenly;
+			border-radius: 5px;
+			margin-left: 0.5rem;
+		}
+	
+		.type .option{
+			background: #dde6f0;
+			height: 100%;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+			margin: 0 0.5rem;
+			border-radius: 5px;
+			cursor: pointer;
+			padding: 0 10px;
+			border: 1px solid grey;
+			transition: all 0.3s ease;
+		}
+	
+		.type .option .dot{
+			height: 20px;
+			width: 20px;
+			background: #d9d9d9;
+			border-radius: 50%;
+			position: relative;
+		}
+		
+		.type .option .dot::before{
+			position: absolute;
+			content: "";
+			top: 4px;
+			left: 4px;
+			width: 12px;
+			height: 12px;
+			background: #004554;
+			border-radius: 50%;
+			opacity: 0;
+			transform: scale(1.5);
+			transition: all 0.3s ease;
+		}
+	
+		input[type="radio"]{
+			display: none;
+		}
+	
+		#option-1:checked:checked ~ .option-1,
+		#option-2:checked:checked ~ .option-2{
+			border-color: grey;
+			background: #004554;
+		}
+	
+		#option-1:checked:checked ~ .option-1 .dot,
+		#option-2:checked:checked ~ .option-2 .dot{
+			background: #fff;
+		}
+
+		#option-1:checked:checked ~ .option-1 .dot::before,
+		#option-2:checked:checked ~ .option-2 .dot::before{
+			opacity: 1;
+			transform: scale(1);
+		}
+
+		.type .option span{
+			font-weight: 200;
+			font-size: 2rem;
+			color: #808080;
+		}
+
+		#option-1:checked:checked ~ .option-1 span,
+		#option-2:checked:checked ~ .option-2 span{
+			color: #fff;
+		}
+
 	</style>
 
 	<head>
 		<title>pYTDL</title>
-		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap" rel="stylesheet">
 	</head>
 
 	<body>
 		<h1>pYTDl</h1>
 		<hr>
-		<div>
+		<div class="inputframe">
 			<p>URL:</p>
 			<input class="textbox" id="url" type="url" name="url">
 			<input id="button" class="button" type="submit" value="Submit">
 			<input id="convert" class="button" type="submit" value="Convert" disabled>
 			<input id="download" class="button" type="submit" value="Download" disabled>
+			<br>
+			<div class="type">
+				<input type="radio" name="select" id="option-1" checked>
+				<input type="radio" name="select" id="option-2">
+			
+				<label for="option-1" class="option option-1">
+					<div class="dot"></div>
+					<span>Audio</span>
+				</label>
+			
+				<label for="option-2" class="option option-2">
+					<div class="dot"></div>
+					<span>Video</span>
+				</label>
+			</div>
 		</div>
-		<div>
+		<div class="previewframe">
 			<p>Preview:</p>
 			<iframe id="prev" width="560" height="315" src="" title="YouTube video player" frameborder="1"; autoplay; clipboard-write; encrypted-media;></iframe>
-		</div>
+	</div>
 	</body>
 
 	<script>
@@ -89,26 +204,31 @@
 		console.log(queryString)
 		console.log(urlParams)
 		if(urlParams != null && queryString != "") {
-			url = urlParams.get('url')
+			let url = urlParams.get('url');
+			let mode = urlParams.get('mode');
 			document.getElementById('url').value = url;
 			document.getElementById("download").disabled = false;
 			document.getElementById("prev").setAttribute("src", url.replace("watch?v=", "embed/"));
+			document.getElementById("option-1").checked = (mode == "audio");
+			document.getElementById("option-2").checked = (mode == "video");
 		}
 		
 		function submitURL() {
-			url = document.getElementById("url").value;
+			let url = document.getElementById("url").value;
 			document.getElementById("prev").setAttribute("src", url.replace("watch?v=", "embed/"));
 			document.getElementById("convert").disabled = false;
 		}
 
 		function convertURL() {
-			url = document.getElementById("url").value	
+			let url = document.getElementById("url").value;
+			let mode = document.getElementById("option-1").checked ? "audio" : "video";
 			if(url != "")
-				window.location=`/download?url=${url}`;
+				window.location=`/download?url=${url}&mode=${mode}`;
 		}
 
 		function downloadURL() {
-			window.location=`/file`;
+			let mode = document.getElementById("option-1").checked ? "audio" : "video";
+			window.location=`/file?mode=${mode}`;
 		}
 	</script>
 </html>
