@@ -4,17 +4,17 @@ import os
 import io
 from markupsafe import escape
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/res', static_folder='resources/static')
 
 @app.route("/")
 def index():
-    with open('index.html', 'r') as file:
+    with open('resources/html/index.html', 'r') as file:
         data = file.read()
     return data
 
 @app.route("/download")
 def download():
-    with open('index.html', 'r') as file:
+    with open('resources/html/index.html', 'r') as file:
         data = file.read()
     url = request.args.get('url')
     mode = request.args.get('mode')

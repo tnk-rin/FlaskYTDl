@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="EN">
+	<head>
+		<title>pYTDL</title>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" type="text/css" href="/res/style.css">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap" rel="stylesheet">
+	</head>
+
+	<body>
+		<h1>pYTDl</h1>
+		<hr>
+		<div class="inputframe">
+			<p>URL:</p>
+			<input class="textbox" id="url" type="url" name="url">
+			<input id="button" class="button" type="submit" value="Submit">
+			<input id="convert" class="button" type="submit" value="Convert" disabled>
+			<input id="download" class="button" type="submit" value="Download" disabled>
+			<br>
+			<div class="type">
+				<input type="radio" name="select" id="option-1" checked>
+				<input type="radio" name="select" id="option-2">
+			
+				<label for="option-1" class="option option-1">
+					<div class="dot"></div>
+					<span>Audio</span>
+				</label>
+			
+				<label for="option-2" class="option option-2">
+					<div class="dot"></div>
+					<span>Video</span>
+				</label>
+			</div>
+		</div>
+		<div class="previewframe">
+			<p>Preview:</p>
+			<iframe id="prev" width="560" height="315" src="" title="YouTube video player" frameborder="1"; autoplay; clipboard-write; encrypted-media;></iframe>
+	</div>
+	<script src="/res/scripts.js"></script>
+	</body>
+</html>

@@ -1,0 +1,150 @@
+* {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 62.5%;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background: #dde6f0;
+}
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 100;
+	font-size: 4rem;
+	padding: 1rem 29rem 0rem 1rem;
+	color: #000;
+}
+
+p {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 100;
+	font-size: 3rem;
+	padding: 1rem 0rem 0rem 1rem;
+	color: #000;
+}
+
+label {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 100;
+	font-size: 2rem;
+	padding-left: 0.5rem;
+	padding-right: 2rem;
+	color: #000;
+}
+
+iframe {
+	margin: 1rem 1rem 1rem 1rem;
+}
+
+hr {
+    margin: 1rem 1rem 1.5rem;
+    background: #00000010;
+	height: 0px;
+	border-color: #00000000;
+}
+
+.inputframe {
+	margin-left: 1rem;
+	margin-bottom: 1rem;
+}
+
+.previewframe {
+	margin-left: 1rem;
+}
+
+.textbox {
+	width: 37.5rem;
+	height: 5rem;
+	font-size: 1.5rem;
+	margin: 1rem 1rem 1rem 1rem;
+	padding-left: 0.5rem;
+}
+
+.button {
+	width: 11rem;
+	height: 5rem;
+	font-size: 2rem;
+	margin: 0rem 1rem 1rem 0rem;
+}
+
+/* Radio stuff */
+.type{
+	display: inline-flex;
+	height: 5rem;
+	width: 28rem;
+	align-items: center;
+	justify-content: space-evenly;
+	border-radius: 5px;
+	margin-left: 0.5rem;
+}
+
+.type .option{
+	background: #dde6f0;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	margin: 0 0.5rem;
+	border-radius: 5px;
+	cursor: pointer;
+	padding: 0 10px;
+	border: 1px solid grey;
+	transition: all 0.3s ease;
+}
+
+.type .option .dot{
+	height: 20px;
+	width: 20px;
+	background: #d9d9d9;
+	border-radius: 50%;
+	position: relative;
+}
+
+.type .option .dot::before{
+	position: absolute;
+	content: "";
+	top: 4px;
+	left: 4px;
+	width: 12px;
+	height: 12px;
+	background: #004554;
+	border-radius: 50%;
+	opacity: 0;
+	transform: scale(1.5);
+	transition: all 0.3s ease;
+}
+
+input[type="radio"]{
+	display: none;
+}
+
+#option-1:checked:checked ~ .option-1,
+#option-2:checked:checked ~ .option-2{
+	border-color: grey;
+	background: #004554;
+}
+
+#option-1:checked:checked ~ .option-1 .dot,
+#option-2:checked:checked ~ .option-2 .dot{
+	background: #fff;
+}
+
+#option-1:checked:checked ~ .option-1 .dot::before,
+#option-2:checked:checked ~ .option-2 .dot::before{
+	opacity: 1;
+	transform: scale(1);
+}
+
+.type .option span{
+	font-weight: 200;
+	font-size: 2rem;
+	color: #808080;
+}
+
+#option-1:checked:checked ~ .option-1 span,
+#option-2:checked:checked ~ .option-2 span{
+	color: #fff;
+}
