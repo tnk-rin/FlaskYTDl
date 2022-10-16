@@ -1,6 +1,7 @@
 document.getElementById("button").addEventListener("click", submitURL);
 document.getElementById("convert").addEventListener("click", convertURL);
 document.getElementById("download").addEventListener("click", downloadURL);
+document.getElementById("darkmode").addEventListener("click", changeTheme);
 document.getElementById("download").disabled = true;
 
 const queryString = window.location.search;
@@ -32,4 +33,11 @@ function convertURL() {
 function downloadURL() {
 	let mode = document.getElementById("option-1").checked ? "audio" : "video";
 	window.location=`/file?mode=${mode}`;
+}
+
+function changeTheme() {
+	let dark = document.getElementById("darkmode").checked;
+	if (dark) {
+
+	}
 }
