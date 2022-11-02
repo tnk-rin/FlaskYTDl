@@ -37,7 +37,5 @@ function downloadURL() {
 
 function changeTheme() {
 	let dark = document.getElementById("darkmode").checked;
-	if (dark) {
-
-	}
+	document.getElementById("body").className = dark ? "theme-dark" : "theme-light";
 }

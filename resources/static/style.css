@@ -12,16 +12,18 @@
 	--transparent: #00000000;
 	--option-text-selected: #fff;
 	--option-text-deselected: #808080;
+	--option-text-disabled: #b8bbc6;
 	--option-selected: #004554;
 	--option-deselected: #dde6f0;
-	--option-disabled: #dde6f010;
-	--option-hover: #004554cc;
+	--option-disabled: #e3e7ee;
+	--option-enabled: #e9e9ed;
+	--option-hover: #e5e0e5;
 	--option-clicked: #004554aa;
 	--dot-selected: #004554;
 	--dot-deselected: #d9d9d9;
 	--knob-color: #fff;
 	--slider-bg: #ccc;
-	--textbox-bg: #dde6f0;
+	--textbox-bg: #fff;
 }
 
 .theme-dark {
@@ -32,15 +34,17 @@
 	--option-selected: #004554;
 	--option-deselected: #ffffff10;
 	--option-disabled: #00455450;
+	--option-enabled: #00455460;
 	--option-hover: #004554cc;
 	--option-clicked: #004554aa;
 	--option-text-selected: #fff;
-	--option-text-deselected: #808080;
+	--option-text-deselected: #ffffff80;
+	--option-text-disabled: #ffffff30;
 	--dot-selected: #004554;
 	--dot-deselected: #d9d9d9;
 	--knob-color: #ccc;
 	--slider-bg: #bbb;
-	--textbox-bg: #004554;
+	--textbox-bg: #00455450;
 }
 
 body {
@@ -84,18 +88,18 @@ hr {
 }
 
 .header {
-	width: 50%;
+	width: 100%;
 	display: inline-flex;
 }
 
 .header-left {
-	align="left";
-	margin-right: 140rem;
+	align: "left";
 }
 
 .header-right {
-	margin-top: 2rem;
-	align="right";
+	position: absolute;
+	top: 2rem;
+	right: 2rem;
 }
 
 .inputframe {
@@ -108,7 +112,7 @@ hr {
 }
 
 .textbox {
-	background: var(--background);
+	background: var(--textbox-bg);
 	color: var(--text-primary);
 	border: 1px solid grey;
 	border-radius: 5px;
@@ -120,7 +124,7 @@ hr {
 }
 
 .button {
-	background: var(--option-selected);
+	background: var(--option-enabled);
 	-moz-transition: all .08s ease-in;
 	-o-transition: all .08s ease-in;
 	-webkit-transition: all .08s ease-in;
@@ -143,6 +147,8 @@ hr {
 }
 
 .button:disabled {
+	color: var(--option-text-disabled);
+	border-color: var(--option-text-disabled);
 	background: var(--option-disabled);
 }
 
@@ -278,6 +284,8 @@ input[type="radio"] {
 	left: 0;
 	top: 0;
 	background-color: var(--knob-color);
+	/*
 	-webkit-box-shadow: 0 2px 6px rgba(153, 153, 153, 0.75);
 	box-shadow: 0 2px 6px rgba(153, 153, 153, 0.75);
+	*/
 }
