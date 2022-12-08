@@ -7,6 +7,11 @@ document.getElementById("download").disabled = true;
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
+const darkTheme = window.matchMedia("(prefers-color-scheme: dark)");
+darkTheme.addEventListener('change', e => {
+	document.getElementById("body").className = e.matches ? "theme-dark" : "theme-light";
+})
+
 if(urlParams != null && queryString != "") {
 	let url = urlParams.get('url');
 	let mode = urlParams.get('mode');
