@@ -19,6 +19,8 @@ if(urlParams != null && queryString != "") {
 
 function submitURL() {
 	let url = document.getElementById("url").value;
+	console.log(url)
+	console.log(url.replace("watch?v=", "embed/"));
 	document.getElementById("prev").setAttribute("src", url.replace("watch?v=", "embed/"));
 	document.getElementById("convert").disabled = false;
 }
